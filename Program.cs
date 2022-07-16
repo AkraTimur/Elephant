@@ -11,12 +11,20 @@ namespace Elephant
             Console.WriteLine("My name is " + Name);
             Console.WriteLine("My ears are " + EarSize + " inches tall");
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message">cообщение от другого объекта Elephant</param>
+        /// <param name="whoSaidIt">передается объект Elephant, отправивший сообщение</param>
         public void HearMessage(string message, Elephant whoSaidIt)
         {
             Console.WriteLine(Name + " heard a message");
             Console.WriteLine(whoSaidIt.Name + " said this: " + message);
         }
-
+        public void SpeakTo(Elephant whoToTalkTo, string message)
+        {
+            whoToTalkTo.HearMessage(message, this);
+        }
         static void Main(string[] args)
         {
             
@@ -32,9 +40,6 @@ namespace Elephant
             {
                 Console.WriteLine("take right number");
             }
-            
-
-
                 switch (userChoise)
                 {
                     case 1:
@@ -47,7 +52,6 @@ namespace Elephant
                         break;
                     case 3:
                         Console.WriteLine("References have been swapped");
-                        
                         swapper = lloyd;
                         lloyd = lucinda;
                         lucinda = swapper;
@@ -56,6 +60,9 @@ namespace Elephant
                         lloyd = lucinda;
                         lloyd.EarSize = 4321;
                         lloyd.WhoAmI();
+                        break;
+                    case 5:
+                        lucinda.SpeakTo(lloyd, "Hi, lloyd!");
                         break;
                     default:
                         Console.WriteLine("Error! Try again");
