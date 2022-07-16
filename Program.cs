@@ -6,13 +6,16 @@ namespace Elephant
     {
         public string Name;
         public int EarSize;
-
         public void WhoAmI()
         {
             Console.WriteLine("My name is " + Name);
             Console.WriteLine("My ears are " + EarSize + " inches tall");
         }
-        
+        public void HearMessage(string message, Elephant whoSaidIt)
+        {
+            Console.WriteLine(Name + " heard a message");
+            Console.WriteLine(whoSaidIt.Name + " said this: " + message);
+        }
 
         static void Main(string[] args)
         {
@@ -49,7 +52,11 @@ namespace Elephant
                         lloyd = lucinda;
                         lucinda = swapper;
                         break;
-
+                    case 4:
+                        lloyd = lucinda;
+                        lloyd.EarSize = 4321;
+                        lloyd.WhoAmI();
+                        break;
                     default:
                         Console.WriteLine("Error! Try again");
                         break;
